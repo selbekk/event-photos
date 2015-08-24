@@ -10,6 +10,8 @@
   "license": "ISC",
   "dependencies": {
     "babel": "^5.8.21",
-    "es6-shim": "^0.33.1"
+    "es6-shim": "^0.33.1",
+    "express": "^4.13.3",
+    "express-handlebars": "^2.0.1"
   }
 }
