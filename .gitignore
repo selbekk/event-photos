@@ -3,3 +3,10 @@
 
 # Dependencies
 node_modules
+
+# Logs
+*.log
+log
+
+# Build
+dist
