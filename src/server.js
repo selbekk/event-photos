@@ -1,8 +1,12 @@
 let express = require('express');
-let express = require('express-handlebars');
+let exphbs = require('express-handlebars');
 let app = express();
 
-app.engine('handlebars', exphbs({ defaultLayout: 'main', layoutsDir: __dirname + '/views/layouts' }));
+app.engine('handlebars', exphbs({
+    defaultLayout: 'main',
+    layoutsDir: __dirname + '/views/layouts',
+    partialsDir: __dirname + '/views/partials'
+}));
 app.set('view engine', 'handlebars');
 app.set('views', __dirname + '/views');
 app.set('port', process.env.PORT || 4000);
@@ -16,5 +20,5 @@ app.get('/privacy', (req, res) => res.render('privacy'));
 
 // Start server
 app.listen(app.get('port'),
-    () => console.log('Server started at port ' + app.get('port') + '.');
+    () => console.log('Server started at port ' + app.get('port') + '.')
 );
