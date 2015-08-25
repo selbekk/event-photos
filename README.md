@@ -2,6 +2,7 @@
 
 This is the frontend part of the event photos application we're currently
 creating a MVP for.
+[You can find the backend repo here](https://github.com/selbekk/event-photos-core).
 
 This app is currently being developed. More info will come once we have some to
 share.
