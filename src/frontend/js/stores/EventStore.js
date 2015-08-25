@@ -2,6 +2,7 @@ let assign = require('object-assign');
 let EventConstants = require('../constants/EventConstants');
 let EventDispatcher = require('../dispatchers/EventDispatcher');
 let EventEmitter = require('events').EventEmitter;
+let request = require('superagent');
 
 const CHANGE_EVENT = 'CHANGE_EVENT';
 
@@ -23,7 +24,17 @@ let EventStore = assign(new EventEmitter(), {
     dispatcherIndex: EventDispatcher.register(payload => {
         switch(payload.action.actionType) {
             case EventConstants.GET_LATEST:
-                EventStore.emitChange();
+                request
+                    .get('http://localhost:4001/events')
+                    .end((err, res) => {
+                        if(err) {
+                            console.error(err);
+                            return; // TODO: Improve error handling
+                        }
+                        
+                        _events = res.body;
+                        EventStore.emitChange();
+                    });
                 break;
         }
     })
