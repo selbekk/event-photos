@@ -7,9 +7,9 @@ let EventActions = {
             actionType: EventConstants.GET_LATEST
         });
     },
-    get(tag) {
+    getEvent(tag) {
         EventDispatcher.handleViewAction({
-            actionType: EventConstants.GET_TAG,
+            actionType: EventConstants.GET_EVENT,
             tag
         });
     }

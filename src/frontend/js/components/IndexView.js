@@ -24,7 +24,7 @@ module.exports = React.createClass({
     render() {
         return <EventList events={this.state.events} />;
     },
-    _onChange(events) {
+    _onChange() {
         this.setState(getUpdatedState());
     }
 })

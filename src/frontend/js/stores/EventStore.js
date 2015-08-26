@@ -13,9 +13,9 @@ let EventStore = assign(new EventEmitter(), {
     getLatest() {
         return _events;
     },
-    getSingle() {
+    getEvent() {
         return _eventDetail;
-    }
+    },
     emitChange() {
         this.emit(CHANGE_EVENT);
     },
@@ -38,7 +38,7 @@ let EventStore = assign(new EventEmitter(), {
                     EventStore.emitChange();
                 });
                 break;
-            case EventConstants.GET_TAG:
+            case EventConstants.GET_EVENT:
                 request.get('http://localhost:4001/events/' + payload.action.tag)
                     .end((err, res) => {
                         if(err) {

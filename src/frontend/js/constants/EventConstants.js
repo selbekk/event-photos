@@ -1,7 +1,7 @@
 const CONSTANTS = {
     GET_LATEST: 'GET_LATEST',
     GET_CLOSEST: 'GET_CLOSEST',
-    GET_TAG: 'GET_TAG'
+    GET_EVENT: 'GET_EVENT'
 };
 
 module.exports = CONSTANTS;

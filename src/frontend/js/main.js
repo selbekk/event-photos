@@ -3,13 +3,13 @@ let Router = require('react-router');
 let { Route, DefaultRoute } = Router;
 
 let App = require('./components/App');
-let Index = require('./components/IndexView');
-let Event = require('./components/EventDetailView');
+let IndexView = require('./components/IndexView');
+let EventDetailView = require('./components/EventDetailView');
 
 let routes = (
     <Route name="app" handler={App} path="/">
         <DefaultRoute handler={IndexView} />
-        <Route name="event-detail" handler={EventDetailView} path="/e/:tag" />
+        <Route name="event-detail" handler={EventDetailView} path="/event/:tag" />
     </Route>
 );
 
