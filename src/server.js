@@ -18,6 +18,13 @@ app.use('/assets', express.static('dist'));
 app.get('/', (req, res) => res.render('index'));
 app.get('/privacy', (req, res) => res.render('privacy'));
 
+// Error handling
+app.use((req, res, next) => {
+    // For History API
+    res.render('index');
+});
+
+
 // Start server
 app.listen(app.get('port'),
     () => console.log('Server started at port ' + app.get('port') + '.')
