@@ -6,7 +6,7 @@
   "scripts": {
     "start": "node app.js",
     "build": "npm run build:css && npm run build:js",
-    "build:css": "lessc src/frontend/less/main.less dist/styles.css",
+    "build:css": "lessc src/frontend/less/main.less --autoprefix=\"last 2 versions\" dist/styles.css",
     "build:js": "browserify src/frontend/js/main.js -t babelify -o dist/scripts.js",
     "watch": "npm run watch:css & npm run watch:js",
     "watch:css": "watch 'npm run build:css' src/frontend/less",
@@ -27,6 +27,7 @@
     "babelify": "^6.2.0",
     "browserify": "^11.0.1",
     "flux": "^2.1.1",
+    "less-plugin-autoprefix": "^1.4.2",
     "object-assign": "^4.0.1",
     "watch": "^0.16.0",
     "watchify": "^3.3.1"
