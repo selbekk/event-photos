@@ -6,12 +6,16 @@ let request = require('superagent');
 
 const CHANGE_EVENT = 'CHANGE_EVENT';
 
-let _events = [ ]; // TODO: Populate with mock data
+let _events = []; // TODO: Populate with mock data
+let _eventDetail = {};
 
 let EventStore = assign(new EventEmitter(), {
     getLatest() {
         return _events;
     },
+    getSingle() {
+        return _eventDetail;
+    }
     emitChange() {
         this.emit(CHANGE_EVENT);
     },
@@ -24,17 +28,27 @@ let EventStore = assign(new EventEmitter(), {
     dispatcherIndex: EventDispatcher.register(payload => {
         switch(payload.action.actionType) {
             case EventConstants.GET_LATEST:
-                request
-                    .get('http://localhost:4001/events')
+                request.get('http://localhost:4001/events').end((err, res) => {
+                    if(err) {
+                        console.error(err);
+                        return; // TODO: Improve error handling
+                    }
+
+                    _events = res.body;
+                    EventStore.emitChange();
+                });
+                break;
+            case EventConstants.GET_TAG:
+                request.get('http://localhost:4001/events/' + payload.action.tag)
                     .end((err, res) => {
                         if(err) {
                             console.error(err);
                             return; // TODO: Improve error handling
                         }
-                        
-                        _events = res.body;
+
+                        _eventDetail = res.body;
                         EventStore.emitChange();
-                    });
+                    })
                 break;
         }
     })

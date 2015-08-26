@@ -22,12 +22,7 @@ module.exports = React.createClass({
         EventStore.removeChangeListener(this._onChange);
     },
     render() {
-
-        return (
-            <div className="app-content">
-                <EventList events={this.state.events} />
-            </div>
-        );
+        return <EventList events={this.state.events} />;
     },
     _onChange(events) {
         this.setState(getUpdatedState());

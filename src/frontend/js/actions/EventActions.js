@@ -6,6 +6,12 @@ let EventActions = {
         EventDispatcher.handleViewAction({
             actionType: EventConstants.GET_LATEST
         });
+    },
+    get(tag) {
+        EventDispatcher.handleViewAction({
+            actionType: EventConstants.GET_TAG,
+            tag
+        });
     }
 };
 
