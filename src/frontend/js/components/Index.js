@@ -25,7 +25,6 @@ module.exports = React.createClass({
 
         return (
             <div className="app-content">
-                <p>There are {this.state.events.length} events currently.</p>
                 <EventList events={this.state.events} />
             </div>
         );
