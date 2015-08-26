@@ -2,17 +2,37 @@
     list-style-type: none;
     padding-left: 0;
     margin: 0;
+
+    .clearfix();
+
+    @media @laptop {
+        margin-top: 55px;
+    }
 }
 
 .event-list-item {
+    cursor: pointer;
     display: block;
     height: 100vh;
     margin-bottom: 1px;
-    padding: 1em;
     position: relative;
+    overflow: hidden;
 
-    @media @tablet {
-        margin-bottom: 1em;
+    @media @laptop {
+        float: left;
+        line-height: 0;
+        width: 33.2%;
+        height: 250px;
+        margin-right: 1px;
+    }
+
+    &:hover,
+    &:focus {
+        .event-list-item-image {
+            filter: blur(2px);
+            transform: scale(1.05);
+            transform-origin: center;
+        }
     }
 }
 
@@ -23,6 +43,7 @@
     position: absolute;
     top: 0;
     left: 0;
+    transition: all .2s ease-out;
     width: 100%;
     z-index: 1;
 
@@ -44,7 +65,7 @@
 }
 
 .event-tag {
-    bottom: .5rem;
+    bottom: 1.5rem;
     color: @color-white;
     font-size: 2rem;
     margin: 0;
@@ -52,4 +73,12 @@
     position: absolute;
     right: .5rem;
     z-index: 3;
+
+    @media @tablet {
+        font-size: 4rem;
+    }
+
+    @media @laptop {
+        font-size: 1.5rem;
+    }
 }
