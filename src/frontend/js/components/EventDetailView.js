@@ -1,6 +1,7 @@
-let React = require('react');
-let EventStore = require('../stores/EventStore');
-let EventActions = require('../actions/EventActions');
+const React = require('react');
+const EventStore = require('../stores/EventStore');
+const EventActions = require('../actions/EventActions');
+const PhotoList = require('./PhotoList');
 
 function getUpdatedState() {
     return {
@@ -27,7 +28,7 @@ let EventDetailView = React.createClass({
                     <h2>{this.state.event.title}</h2>
                     <p className="event-overview-photo-count">{this.state.event.imageCount} photos</p>
                 </header>
-
+                <PhotoList photos={this.state.event.photos} />
             </div>
         );
     },
