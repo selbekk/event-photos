@@ -22,8 +22,12 @@ let EventDetailView = React.createClass({
     render() {
         console.log(this.state);
         return (
-            <div className="event-detail">
-                <h2>Some detail view</h2>
+            <div className="event-overview">
+                <header className="event-overview-header" style={{backgroundImage: 'url(' + this.state.event.coverPhoto + ')'}}>
+                    <h2>{this.state.event.title}</h2>
+                    <p className="event-overview-photo-count">{this.state.event.imageCount} photos</p>
+                </header>
+
             </div>
         );
     },
